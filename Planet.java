@@ -12,7 +12,9 @@ public abstract class Planet {
     protected String name;
     protected double eccentricity, radius, surfaceTemp, gravConstant, atmoPressure;
     protected ArrayList<String> atmoComp = new ArrayList<String>();
+    protected ArrayList<Double> atmoConcentration = new ArrayList<Double>();
     protected ArrayList<String> seaComp = new ArrayList<String>();
+    protected ArrayList<Double> seaConcentration = new ArrayList<Double>();
     protected ArrayList<Moon> moonsList = new ArrayList<Moon>();
 
     public Planet(String name, double eccentricity, double radius, double surfaceTemp, double gravConstant, double atmoPressure) {
@@ -60,14 +62,14 @@ public abstract class Planet {
         return moonsList;
     }
     
-    public void randomAtmo() {
-        //supposed to randomly assign chemicals to atmosphere, in this case SO2 is the only chemical
-        atmoComp.add("SO2");
+    public void addAtmo(String chem, double conc) {
+        atmoComp.add(chem);
+        atmoConcentration.add(conc);
     }
     
-    public void randomSea() {
-        //also supposed to randomly assign chemicals; in this case HCl is the only chemical
-        atmoComp.add("HCl");
+    public void addSea(String chem, double conc) {
+        seaComp.add(chem);
+        seaConcentration.add(conc);
     }
     
     public void randomMoons() {
