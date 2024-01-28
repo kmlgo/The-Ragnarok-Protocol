@@ -71,11 +71,26 @@ public class Spaceship implements Harmable {
     }
     
     public void warp(Planet p) {
-        
+        //warps to planet P
+        System.out.println("Warped to planet" + p);
     }
     
-    public void land(Planet p) {
+    public void land(Planet p) throws PartSelectionException{
+        //lands on planet P
+        landingGearState = true;
+        System.out.println("Landed on planet " + p.name);
         
+        for(int i = 0; i < p.atmoComp.size(); i++){
+            if((p.atmoComp.get(i).equalsIgnoreCase("CH4")) && (p.atmoConcentration.get(i) >= 70.0)){
+                while((landingGearHealth > 0) && (reactorGenHealth > 0) && (windowHealth > 0)){ 
+                    //This is coded like there are game ticks, but we haven't learned timers yet so this will be changed later on
+                    loseHP(20, 3);
+                }
+            }
+            else{
+                throw new PartSelectionException("Selected part is out of range!");
+            }
+        }
     }
     
     @Override
