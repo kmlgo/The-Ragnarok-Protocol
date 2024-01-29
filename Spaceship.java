@@ -87,9 +87,6 @@ public class Spaceship implements Harmable {
                     loseHP(20, 3);
                 }
             }
-            else{
-                throw new PartSelectionException("Selected part is out of range!");
-            }
         }
     }
     
